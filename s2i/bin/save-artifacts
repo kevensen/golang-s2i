@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd $GOPATH
+tar cf - pkg bin src
