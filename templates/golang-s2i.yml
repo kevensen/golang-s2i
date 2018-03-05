@@ -6,6 +6,9 @@ metadata:
   annotations:
     description: A basic builder for Golang applications
     iconClass: icon-go-gopher
+    openshift.io/display-name: Golang S2I Builder Image Builder
+    openshift.io/documentation-url: https://github.com/kevensen/golang-s2i
+    template.openshift.io/bindable: "false"
     tags: golang,s2i
   creationTimestamp: null
   name: golang-s2i

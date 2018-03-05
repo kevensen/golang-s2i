@@ -7,7 +7,9 @@ metadata:
     description: A basic builder for Golang applications
     iconClass: icon-go-gopher
     tags: golang
-  creationTimestamp: null
+    openshift.io/display-name: Go
+    openshift.io/documentation-url: https://github.com/kevensen/golang-s2i
+    template.openshift.io/bindable: "false"
   name: golang
 objects:
 - apiVersion: v1
