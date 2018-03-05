@@ -3,7 +3,7 @@
 This is a Source-to-Image builder for Golang applications.  It supports the Source strategy in OpenShift.
 
 ## Included Templates
-There are two templates included in this repository.  The [golang.yml](templates/golang-s2i.yml) template builds the builder image.  The [golang.yml](templates/golang.yml) defines the build and deployment for Golang apps using the Golang S2I builder image.
+There are two templates included in this repository.  The [golang-s2i.yml](templates/golang-s2i.yml) template builds the builder image.  The [golang.yml](templates/golang.yml) defines the build and deployment for Golang apps using the Golang S2I builder image.
 
 ## Building the Builder Image
 Before building and deploying Golang based apps, the Golang S2I builder image must first be bult.  There are a couple ways to build the builder image.  One is to use the template.  The other is to use **oc new-build...** from the command line.
