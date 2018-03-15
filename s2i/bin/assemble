@@ -5,8 +5,6 @@ export GO_REPO=$(echo $OPENSHIFT_BUILD_SOURCE | sed --expression='s/\.git//g' | 
 mkdir -p $GOPATH/src/$GO_REPO
 cp -ar /opt/app-root/destination/src/* $GOPATH/src/$GO_REPO
 pushd $GOPATH/src/$GO_REPO
-pwd
-ls -al
 glide install
 popd
 go build -o goexec $GO_REPO
