@@ -14,9 +14,9 @@ LABEL io.k8s.description="Platform for building go based programs" \
       io.openshift.s2i.destination="/opt/app-root/destination"
 
 RUN yum clean all && \
-    yum install -y tar \
-                   git-remote-bzr \
-                   golang && \
+    yum install -y git-remote-bzr \
+                   golang \
+		   glide && \
     yum clean all && rm -rf /var/cache/yum/*
 
 COPY ./s2i/bin/ /usr/local/s2i

@@ -2,5 +2,11 @@
 #
 # S2I assemble script for the 'golang-s2i' image.
 export GO_REPO=$(echo $OPENSHIFT_BUILD_SOURCE | sed --expression='s/\.git//g' | sed --expression='s/https:\/\///g')
-go get -u -d $GO_REPO
+mkdir -p $GOPATH/src/$GO_REPO
+cp -ar /opt/app-root/destination/src/* $GOPATH/src/$GO_REPO
+pushd $GOPATH/src/$GO_REPO
+pwd
+ls -al
+glide install
+popd
 go build -o goexec $GO_REPO
