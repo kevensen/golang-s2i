@@ -2,8 +2,14 @@
 #
 # S2I assemble script for the 'golang-s2i' image.
 export GO_REPO=$(echo $OPENSHIFT_BUILD_SOURCE | sed --expression='s/\.git//g' | sed --expression='s/https:\/\///g')
+if [ -z "$GO_REPO" ]; then
+  export GO_REPO=$(grep ^package /opt/app-root/destination/src/glide.yaml | sed 's/package: //')
+fi
+
 mkdir -p $GOPATH/src/$GO_REPO
+
 cp -ar /opt/app-root/destination/src/* $GOPATH/src/$GO_REPO
+
 pushd $GOPATH/src/$GO_REPO
 glide install
 popd
