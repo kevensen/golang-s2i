@@ -8,9 +8,20 @@ fi
 
 mkdir -p $GOPATH/src/$GO_REPO
 
+# Copy the source
 cp -ar /opt/app-root/destination/src/* $GOPATH/src/$GO_REPO
+rm -rf /opt/app-root/destination/src/*
 
-pushd $GOPATH/src/$GO_REPO
-glide install
-popd
+# Restore build artifacts
+if [ "$(ls /opt/app-root/destination/artifacts/ 2>/dev/null)" ]; then
+    echo "Using artifacts from previous build."
+    mv /opt/app-root/destination/artifacts/vendor $GOPATH/src/$GO_REPO/vendor
+else
+    pushd $GOPATH/src/$GO_REPO
+    echo "Obtaining artifacts."
+    glide install -v
+    popd
+
+fi
+
 go build -o goexec $GO_REPO
